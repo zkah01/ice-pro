@@ -1,0 +1,18 @@
+{
+  "vite": true,
+  "plugins": [
+    "build-plugin-jsx-plus",
+    [
+      "build-plugin-ignore-style",
+      {
+        "libraryName": "antd"
+      }
+    ]
+  ],
+  "proxy": {
+    "/regulatory-system": {
+      "enable": true,
+      "target": "http://101.34.254.244:9995"
+    }
+  }
+}

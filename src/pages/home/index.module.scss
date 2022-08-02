@@ -1,0 +1,13 @@
+.container {
+  width: 100%;
+  padding: 20px;
+
+  .ant-table-thead > tr > th {
+    font-weight: bolder;
+  }
+  .test_title {
+    width: 100px;
+    height: 100px;
+    background-color: aquamarine;
+  }
+}
