@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <h2>Home page</h2>
+      <h2 className={styles.title}>Home page</h2>
       <div>
         <Table dataSource={dataSource} rowKey="id">
           <Table.Column title="ID" dataIndex="id" key="id" />

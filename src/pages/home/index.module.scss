@@ -1,3 +1,4 @@
+@import '../../variables.module.scss';
 .container {
   width: 100%;
   padding: 20px;
@@ -9,5 +10,8 @@
     width: 100px;
     height: 100px;
     background-color: aquamarine;
+  }
+  .title{
+    color: $main_c;
   }
 }
