@@ -1,11 +1,16 @@
 // 路由高阶组件
-import { useAuth, Redirect } from 'ice';
+import { getToken } from '@/utils/token';
+import { Redirect, useHistory } from 'ice';
 
 const LoginWrapper = (WrappedComponent) => {
+  const history = useHistory();
+
   const Wrapped = (props) => {
-    const [auth] = useAuth();
-    console.log(auth, '取到的页面配置auth');
-    return <>{auth.isLogin ? <WrappedComponent {...props} /> : <Redirect to="/login" />}</>;
+    let isAuthenticated = Boolean(getToken());
+    if (!isAuthenticated) {
+      history && history.replace('/login');
+    } 
+    return <>{isAuthenticated ? <WrappedComponent {...props} /> : <Redirect to="/login" />}</>;
   };
 
   return Wrapped;

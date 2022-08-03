@@ -17,13 +17,13 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
     "@ice/spec": "^1.0.1",
-    "@iceworks/spec": "^1.0.1",
+    "@iceworks/spec": "^1.6.0",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
     "build-plugin-antd": "^0.1.2",
     "build-plugin-ignore-style": "^0.1.0",
     "build-plugin-jsx-plus": "^0.1.4",
-    "eslint": "^7.32.0",
+    "eslint": "^8.21.0",
     "ice.js": "^2.0.0",
     "stylelint": "^13.13.1"
   },

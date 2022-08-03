@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import styles from './index.module.css';
 
 function Second() {

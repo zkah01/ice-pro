@@ -1,6 +1,6 @@
 import { message } from 'antd';
 import { runApp, IAppConfig } from 'ice';
-import { getToken } from './services/token';
+import { getToken } from './utils/token';
 function getRole(): any {
   return new Promise((res, rej) => {
     res(localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')!));
@@ -10,17 +10,18 @@ const appConfig: IAppConfig = {
   app: {
     rootId: 'ice-container',
     getInitialData: async (ctx) => {
-      const { roleId } = await getRole();
-
-      return {
-        auth: {
-          admin: roleId === 3,
-          guest: roleId === 4,
-        },
-        initialStates: {
-          user: { userInfo: localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')!) },
-        },
-      };
+      if (localStorage.getItem('user')) {
+        const { roleId } = await getRole();
+        return {
+          auth: {
+            admin: roleId === 3,
+            guest: roleId === 4,
+          },
+          initialStates: {
+            user: { userInfo: localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')!) },
+          },
+        };
+      }
     },
   },
   request: [

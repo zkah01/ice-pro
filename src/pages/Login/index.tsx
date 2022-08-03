@@ -1,17 +1,14 @@
-import React, { Component } from 'react';
 import { Button, Input, Form } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
-import { SmileOutlined, HeartOutlined } from '@ant-design/icons';
 import md5 from 'blueimp-md5';
 import styles from './index.module.less';
 
-import { setToken } from '@/services/token';
+import { setToken } from '@/utils/token';
 import { login } from '../../api/demo';
 
 import store from '@/store';
 
 function Login(props) {
-
   const asideMenuConfig = [
     {
       name: 'login',
@@ -50,7 +47,10 @@ function Login(props) {
       update({ userInfo: res });
       localStorage.setItem('user', JSON.stringify(res));
       localStorage.setItem('routes', JSON.stringify(asideMenuConfig));
-      props.history.replace('/home');
+      setTimeout(() => {
+        props.history.replace('/home');
+        window.location.reload();
+      }, 100);
     });
   };
   const onFinish = (values) => {

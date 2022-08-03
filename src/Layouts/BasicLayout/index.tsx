@@ -1,14 +1,12 @@
 import { createElement } from 'react';
 import ProLayout, { DefaultFooter } from '@ant-design/pro-layout';
-import { Link, useHistory, useAuth, getInitialData } from 'ice';
-import { asideMenuConfig } from './menuConfig';
-import { removeToken } from '@/services/token';
+import { Link, useHistory, useAuth } from 'ice';
+import { removeToken } from '@/utils/token';
 import store from '@/store';
 import { Button } from 'antd';
 import { PoweroffOutlined } from '@ant-design/icons';
 
 const loopMenuItem = (menus, auth) => {
-
   return menus
     .filter((item) => item.path !== '/login')
     .map(({ icon, children, ...item }) => {
@@ -30,7 +28,6 @@ const loopMenuItem = (menus, auth) => {
 
 export default function BasicLayout({ children, location }) {
   const [auth] = useAuth();
-  // console.log(auth);
   // const initialData = getInitialData();
   // console.log(initialData);
 
@@ -40,6 +37,7 @@ export default function BasicLayout({ children, location }) {
   const logout = () => {
     removeToken();
     localStorage.removeItem('user');
+    localStorage.removeItem('routes');
     history.replace('/login');
   };
   const headerContent = (

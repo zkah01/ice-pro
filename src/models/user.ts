@@ -1,5 +1,5 @@
 // src/models/user.ts
-import { Link, useHistory, useAuth, getInitialData } from 'ice';
+import { IRootState, IRootDispatch } from '@/store';
 
 export const delay = (time) => new Promise<void>((resolve) => setTimeout(() => resolve(), time));
 
@@ -20,10 +20,10 @@ export default {
   },
 
   // 定义处理该模型副作用的函数
-  effects: (dispatch) => ({
-    async getUserInfo() {
+  effects: (dispatch: IRootDispatch) => ({
+    async getUserInfo(payload, rootState: IRootState) {
       await delay(1000);
-      dispatch.user.update();
+      await dispatch.user.update();
     },
   }),
 };
